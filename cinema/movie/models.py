@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField("Категория", max_length=255)
@@ -8,6 +9,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={"url": self.url})
 
     class Meta:
         verbose_name = "Категория"
@@ -32,8 +36,12 @@ class Genre(models.Model):
     descripsion = models.TextField("Описание",)
     url = models.SlugField(max_length=160, unique=True)
 
+
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('genre', kwargs={"url": self.url})
 
     class Meta:
         verbose_name = "Жанр"
@@ -48,17 +56,22 @@ class Movie(models.Model):
     country = models.CharField('Страна', max_length=50)
     director = models.ManyToManyField(Actor, verbose_name="Режиссер", related_name='film_director')
     actors = models.ManyToManyField(Actor, verbose_name="Актеры", related_name="film_actor")
-    genre = models.ManyToManyField(Genre, verbose_name="Жанры")
+    genre = models.ManyToManyField(Genre, verbose_name="Жанры", related_name='movies')
     primer = models.DateField("Премьера в мире", default=date.today)
     budget = models.PositiveSmallIntegerField("Бюджет", default=0, help_text="Указать сумму в долларах")
     money_in_usa = models.PositiveSmallIntegerField("Сборы в США", default=0, help_text="Указать сумму в долларах")
     money_in_world = models.PositiveSmallIntegerField("Сборы в Мире", default=0, help_text="Указать сумму в долларах")
-    category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True, related_name='movies')
     url = models.SlugField(max_length=160, unique=True)
     is_published = models.BooleanField("Черновик", default=False)
 
+
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('movie', kwargs={"url": self.url})
+
 
     class Meta:
         verbose_name = "Фильм"

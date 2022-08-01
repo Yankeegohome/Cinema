@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="ab-info-main py-md-5 py-4 editContent" style="padding-left: 3rem; padding-right: 3rem;">
+        {% include 'inc/_sitebar.html' %}
+                    <!-- //product left -->
+                    <!-- product right -->
+                    <div class="left-ads-display col-lg-9">
+                        <div class="row">
+                             {% for item in movies %}
+                            <div class="col-md-4 product-men">
+                                <div class="product-shoe-info editContent text-center mt-lg-4" >
+                                    <div class="men-thumb-item">
+                                        <img src="{{ item.poster.url }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="item-info-product">
+                                        <h4 class="">
+                                            <a href="#" class="editContent" >{{ item.title }}</a>
+                                        </h4>
+
+                                        <div class="product_price">
+                                            <div class="grid-price">
+                                                <span class="money editContent" >{{ item.slogan }}</span>
+                                            </div>
+                                        </div>
+                                        <ul class="stars">
+                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!--<div class="grid-img-right mt-4 text-right bg bg1" >
+                            <span class="money editContent" >Flat 50% Off</span>
+                            <a href="moviesingle.html" class="btn" >Now</a>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
