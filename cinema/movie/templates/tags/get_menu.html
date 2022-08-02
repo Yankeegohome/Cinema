@@ -1,0 +1,12 @@
+{% load get_genries %}
+<li>
+    <!-- First Tier Drop Down -->
+    {% for item in categories %}
+    <label for="drop-2" class="toggle"> {{ item.name }}<span class="fa fa-angle-down" aria-hidden="true" ></span> </label>
+    <a href="{{ item.get_absolute_url }}">{{ item.name }} <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+    {% endfor %}
+    <input type="checkbox" id="drop-2">
+    <ul>
+        {% show_genries %}
+    </ul>
+</li>

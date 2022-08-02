@@ -3,15 +3,15 @@ from django.utils.safestring import mark_safe
 from .models import *
 
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"url": ("name",)}
+    prepopulated_fields = {"slug": ("name",)}
 
 class GenreAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"url": ("name",)}
+    prepopulated_fields = {"slug": ("name",)}
 
 class MovieAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"url": ("title",)}
+    prepopulated_fields = {"slug": ("title",)}
     save_on_top = True
-    list_display = ('id', 'title', 'url', 'category', 'get_poster', 'is_published' )
+    list_display = ('id', 'title', 'slug', 'category', 'get_poster', 'is_published' )
     list_display_links = ('id', 'title')
     search_fields = ('title',)
     list_filter = ('category', 'genre')

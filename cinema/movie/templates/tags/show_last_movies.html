@@ -1,0 +1,12 @@
+{% for item in movies %}
+<div class="special-sec1 row mt-3 editContent" >
+    <div class="img-deals col-md-4">
+        <a href="{{ item.get_absolute_url }}"><img src="{{ item.poster.url }}" class="img-fluid" alt="" ></a>
+    </div>
+    <div class="img-deal1 col-md-8">
+        <a href="{{ item.get_absolute_url }}" class="editContent" >
+        <h3 class="editContent" >{{ item.title }}</h3>
+        </a>
+    </div>
+</div>
+{% endfor %}

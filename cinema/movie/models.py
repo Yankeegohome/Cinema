@@ -5,17 +5,18 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField("Категория", max_length=255)
     descripsion = models.TextField("Описание", blank=True)
-    url = models.SlugField(max_length=160, unique=True)
+    slug = models.SlugField(max_length=160, unique=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={"url": self.url})
+        return reverse('category', kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+        ordering =['name']
 
 class Actor(models.Model):
     name = models.CharField("Имя актера", max_length=100)
@@ -34,14 +35,14 @@ class Actor(models.Model):
 class Genre(models.Model):
     name = models.CharField('Жанры', max_length=150)
     descripsion = models.TextField("Описание",)
-    url = models.SlugField(max_length=160, unique=True)
+    slug = models.SlugField(max_length=160, unique=True)
 
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('genre', kwargs={"url": self.url})
+        return reverse('genre', kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = "Жанр"
@@ -62,7 +63,7 @@ class Movie(models.Model):
     money_in_usa = models.PositiveSmallIntegerField("Сборы в США", default=0, help_text="Указать сумму в долларах")
     money_in_world = models.PositiveSmallIntegerField("Сборы в Мире", default=0, help_text="Указать сумму в долларах")
     category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True, related_name='movies')
-    url = models.SlugField(max_length=160, unique=True)
+    slug = models.SlugField(max_length=160, unique=True)
     is_published = models.BooleanField("Черновик", default=False)
 
 
@@ -70,7 +71,7 @@ class Movie(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('movie', kwargs={"url": self.url})
+        return reverse('movie', kwargs={"slug": self.slug})
 
 
     class Meta:

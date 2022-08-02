@@ -1,3 +1,6 @@
+{% load get_genries %}
+{% load last_movies %}
+
             <div class="container-fluid py-md-3">
                 <div class="row">
                     <div class="side-bar col-lg-3">
@@ -13,22 +16,7 @@
                         <div class="left-side my-4">
                             <h3 class="sear-head editContent" >Жанры</h3>
                             <ul class="w3layouts-box-list">
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Аниме</span>
-                                </li>
-                                    <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Боевики</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Комедии</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Ужасы</span>
-                                </li>
+                                {% show_genries %}
                             </ul>
                         </div>
                         <!-- // preference -->
@@ -123,56 +111,7 @@
                         <!-- deals -->
                         <div class="deal-leftmk left-side">
                             <h3 class="sear-head editContent">Последние добавленные</h3>
-                            <div class="special-sec1 row mt-3 editContent">
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/images/s4.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="img-deal1 col-md-4">
-                                    <h3 class="editContent">Рэмбо: Последняя кровь</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/images/s2.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >Холодное сердце 2</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/images/s1.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >К звездам</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/images/s5.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >Терминатор: Темные судьбы</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/images/s3.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >Джокер</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
+                                {% show_movies %}
                         </div>
                         <!-- //deals -->
 

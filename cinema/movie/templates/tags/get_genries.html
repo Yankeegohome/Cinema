@@ -1,0 +1,5 @@
+{% for item in genre %}
+<li class="editContent" >
+    <a href="{{item.get_absolute_url}}">{{ item.name }}</a>
+</li>
+{% endfor %}
